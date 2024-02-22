@@ -7,6 +7,5 @@ export default defineNuxtConfig({
     devtools: {enabled: true},
 
     plugins: [
-        {src: "~/plugins/minecraft.ts", mode: "client"}
     ]
 })

@@ -6,19 +6,17 @@ const {companion} = defineProps<{
   companion: Companion
 }>()
 
-const imageTexture = `https://picsum.photos/id/${(companion.id.length * 12345) %500}/200/300`
-
 </script>
 
 <template>
 
-  <div class="border-teal border-2 rounded p-5 flex flex-col h-full w-full">
-    <div class="h-52 w-full">
-      <img :src="imageTexture" class="object-cover w-full h-full" alt="">
+  <div class="border-teal border-2 rounded p-5 flex flex-col h-full w-full space-y-5">
+    <div class="h-80 w-full bg-crust rounded">
+      <Scene3D object-file="/vulpis.obj" texture-file="/vulpis.png"/>
     </div>
     <h3 class="font-bold">{{ companion.name }}</h3>
 
-    <div class="text-subtext0 my-3 overflow-y-auto h-full">
+    <div class="text-subtext0 overflow-y-auto h-full">
       {{ companion.background }}
     </div>
 

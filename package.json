@@ -12,6 +12,7 @@
   "dependencies": {
     "@heroicons/vue": "^2.1.1",
     "@sceat/three-mcmodel": "^0.1.0",
+    "@tresjs/cientos": "^3.8.0",
     "@tresjs/nuxt": "^2.1.1",
     "nuxt": "^3.10.1",
     "three": "^0.161.0",

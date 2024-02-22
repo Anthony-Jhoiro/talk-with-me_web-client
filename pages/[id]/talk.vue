@@ -26,8 +26,10 @@ const messages = computed(() => {
 async function onNewMessage(e: any) {
   e.preventDefault();
   sendingMessage.value = formInput.value;
-  formInput.value
   await sendMessage(data.value!.companion.id, formInput.value);
+
+  // Reset input
+  formInput.value = ""
   await refresh();
   sendingMessage.value = null;
 }
@@ -37,7 +39,7 @@ const waitingForResponse = computed(() => sendingMessage.value !== null);
 
 </script>
 
-<template>Ò
+<template>
   <div v-if="pending">
     <LoadingIndicator />
   </div>
@@ -48,14 +50,21 @@ const waitingForResponse = computed(() => sendingMessage.value !== null);
 
   <template v-if="status === 'success'">
 
+    <div id="companion-header" class="flex">
+      <div class="size-52">
+        <Scene3D object-file="/vulpis.obj" texture-file="/vulpis.png"/>
+      </div>
+
+      <h2 class="text-4xl font-semibold">{{data.companion.name}}</h2>
+
+    </div>
+
     <p class="text-subtext0 border-l-4 p-5 border-subtext0 mb-5">
       {{data.companion.background}}
     </p>
 
     <section id="discussion">
-      <div v-for="(message, index) in messages" class="border-l-4 px-5 py-2 my-1" :class="index % 2 === 0 ? 'border-blue' : 'border-green'">
-        {{message.message}}
-      </div>
+      <Message v-for="message in messages" :message="message" />
     </section>
 
     <div class="flex justify-center my-5" v-if="waitingForResponse">

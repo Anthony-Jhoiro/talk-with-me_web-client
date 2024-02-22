@@ -16,6 +16,7 @@ export type Companion = {
 export type Message = {
     id: string;
     message: string;
+    type: 'USER' | 'AI' | 'SYSTEM' | 'SUMMARY'
     createdAt: string;
 }
 
